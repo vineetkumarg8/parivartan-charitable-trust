@@ -460,7 +460,11 @@ footer{background:var(--navy); color:rgba(255,255,255,.7); padding:64px 0 28px; 
   });
 
   navLinks.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', closeMenu);
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 900) {
+        closeMenu();
+      }
+    });
   });
 
   document.addEventListener('click', (event) => {
