@@ -184,6 +184,24 @@ footer{background:var(--navy); color:rgba(255,255,255,.7); padding:64px 0 28px; 
 .skip-link{position:absolute; left:-999px; top:0; background:var(--blue); color:#fff; padding:10px 16px; z-index:999;}
 .skip-link:focus{left:16px; top:16px;}
 
+/* MISSION VISION SECTION */
+.mission-vision-wrap{text-align:center; padding:60px 0;}
+.mission-vision-title{font-size:32px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:12px; color:var(--ink);}
+.mission-vision-subtitle{font-size:15px; color:var(--gray); margin-bottom:60px;}
+.mission-vision-container{display:flex; align-items:center; justify-content:center; gap:0; position:relative; max-width:1000px; margin:0 auto;}
+.mv-item{position:relative; text-align:center; flex-shrink:0;}
+.mv-circle{border-radius:50%; display:flex; align-items:center; justify-content:center; flex-direction:column; padding:40px; box-shadow:0 8px 24px rgba(0,0,0,.1); position:relative;}
+.mv-item.vision .mv-circle{width:280px; height:280px; background:#f8f9fa; z-index:1;}
+.mv-item.mission .mv-circle{width:360px; height:360px; background:var(--blue); color:#fff; z-index:2; margin:0 -40px;}
+.mv-item.goals .mv-circle{width:280px; height:280px; background:#f8f9fa; z-index:1;}
+.mv-icon{font-size:48px; margin-bottom:16px;}
+.mv-item.mission .mv-icon{font-size:56px;}
+.mv-title{font-size:24px; font-weight:700; margin-bottom:12px;}
+.mv-item.mission .mv-title{font-size:28px;}
+.mv-text{font-size:14px; line-height:1.6; opacity:.85;}
+.mv-item.vision .mv-text, .mv-item.goals .mv-text{color:var(--gray);}
+.mv-item.mission .mv-text{color:rgba(255,255,255,.9);}
+
 @media (max-width: 900px){
   .wrap{padding:0 20px;}
   .grid-2, .feature-grid, .grid-3, .grid-4, .impact-grid, .footer-grid, .gallery-grid, .field-row{grid-template-columns:1fr 1fr;}
@@ -195,6 +213,8 @@ footer{background:var(--navy); color:rgba(255,255,255,.7); padding:64px 0 28px; 
   .page-hero{padding:48px 0 40px;}
   .page-hero h1{font-size:30px;}
   h2{font-size:26px;}
+  .mission-vision-container{flex-direction:column; gap:30px;}
+  .mv-item.mission .mv-circle{margin:0;}
 }
 @media (max-width: 600px){
   .wrap{padding:0 16px;}
@@ -213,6 +233,15 @@ footer{background:var(--navy); color:rgba(255,255,255,.7); padding:64px 0 28px; 
   .report-row{flex-direction:column; align-items:flex-start; gap:10px;}
   .report-left{margin-bottom:8px;}
   footer{padding:48px 0 20px;}
+  .mission-vision-title{font-size:24px;}
+  .mission-vision-subtitle{font-size:14px; margin-bottom:40px;}
+  .mv-item.vision .mv-circle, .mv-item.goals .mv-circle{width:240px; height:240px; padding:30px;}
+  .mv-item.mission .mv-circle{width:280px; height:280px; padding:35px;}
+  .mv-icon{font-size:36px;}
+  .mv-item.mission .mv-icon{font-size:42px;}
+  .mv-title{font-size:20px;}
+  .mv-item.mission .mv-title{font-size:24px;}
+  .mv-text{font-size:13px;}
 }
 
 </style>
@@ -241,7 +270,6 @@ footer{background:var(--navy); color:rgba(255,255,255,.7); padding:64px 0 28px; 
 <main id="main">
 <section class="page-hero">
   <div class="wrap">
-    <div class="crumb"><a href="index.html">Home</a> / About Us</div>
     <span class="eyebrow">Who we are</span>
     <h1>Parivartan</h1>
     <p>A registered charitable trust promoted and supported by Dr. Bimal Hospital, working to make quality healthcare reachable for patients who can't afford it.</p>
@@ -270,11 +298,35 @@ footer{background:var(--navy); color:rgba(255,255,255,.7); padding:64px 0 28px; 
 
 <section class="section section-alt">
   <div class="wrap">
-    <div class="section-head"><div><h2>Vision, mission &amp; objectives</h2></div></div>
-    <div class="grid-3">
-      <div class="card"><div class="icon-circle">&#128065;</div><h4>Vision</h4><p>A Bihar where no patient is denied treatment because of their ability to pay.</p></div>
-      <div class="card"><div class="icon-circle">&#127919;</div><h4>Mission</h4><p>Fund and deliver free and subsidized medical care, and run preventive health programs in underserved communities.</p></div>
-      <div class="card"><div class="icon-circle">&#9989;</div><h4>Objectives</h4><p>Expand surgical and dialysis support, widen rural camp coverage, and keep 100% of donor funds traceable to outcomes.</p></div>
+    <div class="mission-vision-wrap">
+      <h2 class="mission-vision-title">Mission and Vision</h2>
+      <p class="mission-vision-subtitle">Committed to making quality healthcare accessible to all in Bihar</p>
+
+      <div class="mission-vision-container">
+        <div class="mv-item vision">
+          <div class="mv-circle">
+            <div class="mv-icon">🎯</div>
+            <h3 class="mv-title">Our Vision</h3>
+            <p class="mv-text">A Bihar where no patient is denied treatment because of their ability to pay.</p>
+          </div>
+        </div>
+
+        <div class="mv-item mission">
+          <div class="mv-circle">
+            <div class="mv-icon">👁️</div>
+            <h3 class="mv-title">Our Mission</h3>
+            <p class="mv-text">Fund and deliver free and subsidized medical care, and run preventive health programs in underserved communities.</p>
+          </div>
+        </div>
+
+        <div class="mv-item goals">
+          <div class="mv-circle">
+            <div class="mv-icon">🎖️</div>
+            <h3 class="mv-title">Our Goals</h3>
+            <p class="mv-text">Expand surgical and dialysis support, widen rural camp coverage, and keep 100% of donor funds traceable to outcomes.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
