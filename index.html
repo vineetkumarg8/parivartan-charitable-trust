@@ -49,7 +49,6 @@ body{
 }
 html{scroll-behavior:smooth;}
 h1,h2,h3,h4{letter-spacing:-0.02em;}
-header{backdrop-filter:blur(12px);} 
 .section-head h2{position:relative; display:inline-block;}
 .section-head h2::after{content:""; position:absolute; left:0; bottom:-10px; width:54px; height:3px; border-radius:999px; background:linear-gradient(90deg, var(--blue), var(--accent-2));}
 .card, .feature, .form-card, .summary, .program-img-card, .media-card, .event-row, .report-row, .donate-card, .testimonial{position:relative; overflow:hidden;}
@@ -120,7 +119,7 @@ nav{padding:12px 0;}
 footer{background:linear-gradient(180deg, var(--navy) 0%, #102443 100%);}
 
 /* NAV */
-header{position:sticky; top:0; background:#fff; z-index:50; border-bottom:1px solid var(--line);}
+header{position:sticky; top:0; background:rgba(255,255,255,0.95); backdrop-filter:blur(12px); z-index:50; border-bottom:1px solid var(--line);}
 nav{display:flex; align-items:center; justify-content:space-between; padding:10px 0;}
 .logo{display:flex; align-items:center; gap:10px; font-weight:700; font-size:18px;}
 .logo-mark{width:34px; height:34px; border-radius:9px; background:var(--blue); display:flex; align-items:center; justify-content:center; color:#fff; font-size:16px; font-weight:700;}
