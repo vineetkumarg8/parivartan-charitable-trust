@@ -184,9 +184,22 @@ footer{background:var(--navy); color:rgba(255,255,255,.7); padding:64px 0 28px; 
 .skip-link{position:absolute; left:-999px; top:0; background:var(--blue); color:#fff; padding:10px 16px; z-index:999;}
 .skip-link:focus{left:16px; top:16px;}
 
+/* PROGRAM CARDS WITH IMAGES */
+.program-cards-grid{display:grid; grid-template-columns:repeat(4, 1fr); gap:24px;}
+.program-img-card{background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,.08); transition:transform .3s, box-shadow .3s;}
+.program-img-card:hover{transform:translateY(-4px); box-shadow:0 8px 24px rgba(0,0,0,.12);}
+.program-img-card .card-image{width:100%; height:200px; overflow:hidden; position:relative;}
+.program-img-card .card-image img{width:100%; height:100%; object-fit:cover;}
+.program-img-card .card-content{padding:28px 24px;}
+.program-img-card h3{font-size:18px; font-weight:700; margin-bottom:12px; color:var(--ink); line-height:1.4;}
+.program-img-card p{font-size:13.5px; color:var(--gray); line-height:1.7; margin-bottom:16px;}
+.program-arrow{width:40px; height:40px; border-radius:50%; background:var(--blue-light); color:var(--blue); display:inline-flex; align-items:center; justify-content:center; font-size:18px; transition:background .2s, color .2s;}
+.program-img-card:hover .program-arrow{background:var(--blue); color:#fff;}
+
 @media (max-width: 900px){
   .wrap{padding:0 20px;}
   .grid-2, .feature-grid, .grid-3, .grid-4, .impact-grid, .footer-grid, .gallery-grid, .field-row{grid-template-columns:1fr 1fr;}
+  .program-cards-grid{grid-template-columns:repeat(2, 1fr);}
   .navlinks{display:none; position:absolute; top:100%; left:0; right:0; background:#fff; flex-direction:column; padding:16px 20px; border-bottom:1px solid var(--line); gap:16px; box-shadow:0 4px 12px rgba(0,0,0,.08);}
   .navlinks.open-mobile{display:flex;}
   .nav-toggle{display:block;}
@@ -199,6 +212,7 @@ footer{background:var(--navy); color:rgba(255,255,255,.7); padding:64px 0 28px; 
 @media (max-width: 600px){
   .wrap{padding:0 16px;}
   .grid-2, .grid-3, .grid-4, .gallery-grid, .impact-grid, .footer-grid, .field-row{grid-template-columns:1fr;}
+  .program-cards-grid{grid-template-columns:1fr;}
   h1, .hero h1{font-size:28px;}
   h2{font-size:24px;}
   h3{font-size:18px;}
@@ -241,7 +255,6 @@ footer{background:var(--navy); color:rgba(255,255,255,.7); padding:64px 0 28px; 
 <main id="main">
 <section class="page-hero">
   <div class="wrap">
-    <div class="crumb"><a href="index.html">Home</a> / Programs</div>
     <span class="eyebrow">What we do</span>
     <h1>Hospital &amp; community programs</h1>
     <p>Two arms of work: direct medical support inside the hospital, and preventive health programs out in the community.</p>
@@ -251,15 +264,94 @@ footer{background:var(--navy); color:rgba(255,255,255,.7); padding:64px 0 28px; 
 <section class="section">
   <div class="wrap">
     <div class="section-head"><div><h2>Hospital support activities</h2><p>Direct financial and clinical support for patients who can't afford treatment.</p></div></div>
-    <div class="grid-4">
-      <div class="card"><div class="icon-circle">&#128137;</div><h4>Free surgeries</h4><p>Fully sponsored surgical procedures for eligible patients.</p></div>
-      <div class="card"><div class="icon-circle">&#129517;</div><h4>Dialysis support</h4><p>Ongoing dialysis cost coverage for kidney patients.</p></div>
-      <div class="card"><div class="icon-circle">&#127973;</div><h4>Cancer treatment assistance</h4><p>Chemotherapy and treatment cost support.</p></div>
-      <div class="card"><div class="icon-circle">&#129481;</div><h4>Maternal &amp; child health</h4><p>Safe delivery and newborn care support.</p></div>
-      <div class="card"><div class="icon-circle">&#128301;</div><h4>Subsidized investigations</h4><p>Reduced-cost diagnostic tests and scans.</p></div>
-      <div class="card"><div class="icon-circle">&#128680;</div><h4>Emergency medical aid</h4><p>Rapid-response funding for emergency cases.</p></div>
-      <div class="card"><div class="icon-circle">&#127891;</div><h4>School health programs</h4><p>Routine check-ups for children in partner schools.</p></div>
-      <div class="card"><div class="icon-circle">&#129766;</div><h4>Medical camps</h4><p>Free consultation camps held at the hospital and nearby.</p></div>
+    <div class="program-cards-grid">
+      <div class="program-img-card">
+        <div class="card-image">
+          <img src="Free_Surgeries.jpg" alt="Free surgeries">
+        </div>
+        <div class="card-content">
+          <h3>Free Surgeries</h3>
+          <p>Fully sponsored surgical procedures for eligible patients who cannot afford life-saving operations.</p>
+          <span class="program-arrow">→</span>
+        </div>
+      </div>
+
+      <div class="program-img-card">
+        <div class="card-image">
+          <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?w=600&q=80" alt="Dialysis support">
+        </div>
+        <div class="card-content">
+          <h3>Dialysis Support</h3>
+          <p>Ongoing dialysis cost coverage and treatment support for kidney patients requiring regular care.</p>
+          <span class="program-arrow">→</span>
+        </div>
+      </div>
+
+      <div class="program-img-card">
+        <div class="card-image">
+          <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&q=80" alt="Cancer treatment">
+        </div>
+        <div class="card-content">
+          <h3>Cancer Treatment Assistance</h3>
+          <p>Chemotherapy and treatment cost support for cancer patients undergoing intensive care.</p>
+          <span class="program-arrow">→</span>
+        </div>
+      </div>
+
+      <div class="program-img-card">
+        <div class="card-image">
+          <img src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=600&q=80" alt="Maternal health">
+        </div>
+        <div class="card-content">
+          <h3>Maternal &amp; Child Health</h3>
+          <p>Safe delivery, newborn care support, and maternal health programs for expecting mothers.</p>
+          <span class="program-arrow">→</span>
+        </div>
+      </div>
+
+      <div class="program-img-card">
+        <div class="card-image">
+          <img src="https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?w=600&q=80" alt="Subsidized investigations">
+        </div>
+        <div class="card-content">
+          <h3>Subsidized Investigations</h3>
+          <p>Reduced-cost diagnostic tests, scans, and medical investigations for eligible patients.</p>
+          <span class="program-arrow">→</span>
+        </div>
+      </div>
+
+      <div class="program-img-card">
+        <div class="card-image">
+          <img src="medical_aid.png" alt="Emergency medical aid">
+        </div>
+        <div class="card-content">
+          <h3>Emergency Medical Aid</h3>
+          <p>Rapid-response funding for emergency cases requiring immediate medical intervention.</p>
+          <span class="program-arrow">→</span>
+        </div>
+      </div>
+
+      <div class="program-img-card">
+        <div class="card-image">
+          <img src="indian-doctor-examine.jpg" alt="School health programs">
+        </div>
+        <div class="card-content">
+          <h3>School Health Programs</h3>
+          <p>Routine check-ups and health screenings for children in partner schools across Bihar.</p>
+          <span class="program-arrow">→</span>
+        </div>
+      </div>
+
+      <div class="program-img-card">
+        <div class="card-image">
+          <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=600&q=80" alt="Medical camps">
+        </div>
+        <div class="card-content">
+          <h3>Medical Camps</h3>
+          <p>Free consultation and health screening camps held at the hospital and nearby communities.</p>
+          <span class="program-arrow">→</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
