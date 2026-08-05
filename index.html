@@ -18,6 +18,9 @@
   --green-light:#E1F5EE;
 }
 *{box-sizing:border-box; margin:0; padding:0;}
+html, body{
+  overflow-x:hidden;
+}
 body{
   font-family:'Segoe UI', Inter, -apple-system, Arial, sans-serif;
   color:var(--ink);
@@ -30,9 +33,95 @@ ul{list-style:none;}
 .wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
 button{font-family:inherit; cursor:pointer;}
 
+:root{
+  --accent-2:#4C80F5;
+  --surface:#F7FAFF;
+  --surface-2:#F4F8FF;
+  --shadow-sm:0 10px 26px rgba(27,42,74,.08);
+  --shadow-md:0 20px 45px rgba(27,42,74,.12);
+  --radius-lg:20px;
+  --radius-xl:24px;
+}
+
+body{
+  background:linear-gradient(180deg, #f8fbff 0%, #ffffff 100%);
+  line-height:1.65;
+}
+html{scroll-behavior:smooth;}
+h1,h2,h3,h4{letter-spacing:-0.02em;}
+header{backdrop-filter:blur(12px);} 
+.section-head h2{position:relative; display:inline-block;}
+.section-head h2::after{content:""; position:absolute; left:0; bottom:-10px; width:54px; height:3px; border-radius:999px; background:linear-gradient(90deg, var(--blue), var(--accent-2));}
+.card, .feature, .form-card, .summary, .program-img-card, .media-card, .event-row, .report-row, .donate-card, .testimonial{position:relative; overflow:hidden;}
+.card::before, .feature::before, .program-img-card::before, .media-card::before{content:""; position:absolute; inset:0 0 auto 0; height:3px; background:linear-gradient(90deg, var(--blue), var(--accent-2));}
+.nav-toggle{display:none; background:none; border:none; font-size:24px; color:var(--navy);} 
+nav{padding:12px 0;}
+.logo img{filter:drop-shadow(0 6px 14px rgba(47,111,237,.16));}
+.btn{transition:transform .2s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;}
+.btn:hover{transform:translateY(-2px);}
+.btn-primary{box-shadow:0 12px 28px rgba(47,111,237,.22);} 
+.btn-primary:hover{box-shadow:0 16px 34px rgba(47,111,237,.28);} 
+.btn-outline:hover{box-shadow:0 8px 18px rgba(27,42,74,.06);} 
+
+.page-hero, .hero{position:relative; overflow:hidden;}
+.page-hero::before, .hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at top right, rgba(255,255,255,.16), transparent 34%);
+  pointer-events:none;
+}
+
+.card, .feature, .form-card, .summary, .program-img-card, .media-card, .event-row, .report-row, .donate-card, .testimonial{
+  box-shadow:var(--shadow-sm);
+  border:1px solid rgba(228,231,236,.95);
+}
+
+.section-alt{background:linear-gradient(180deg, var(--surface) 0%, #ffffff 100%);} 
+.features{position:relative; overflow:hidden;}
+.features::before{
+  content:"";
+  position:absolute;
+  inset:auto -10% -40% auto;
+  width:260px;
+  height:260px;
+  border-radius:50%;
+  background:rgba(255,255,255,.08);
+  pointer-events:none;
+}
+
+.eyebrow{box-shadow:0 8px 18px rgba(47,111,237,.08);} 
+.hero-img, .hero-image, .page-hero img, .program-img-card .card-image img, .media-card .img img{
+  border:1px solid rgba(255,255,255,.16);
+  box-shadow:var(--shadow-md);
+}
+
+.program-img-card:hover, .media-card:hover, .card:hover, .feature:hover{
+  transform:translateY(-4px);
+  box-shadow:var(--shadow-md);
+}
+
+.program-img-card, .media-card, .card, .feature{
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+
+.impact{background:linear-gradient(135deg, var(--blue-light) 0%, #f8fbff 100%); position:relative; overflow:hidden;}
+.impact::before{
+  content:"";
+  position:absolute;
+  right:-40px;
+  top:-40px;
+  width:140px;
+  height:140px;
+  border-radius:50%;
+  background:rgba(47,111,237,.08);
+}
+
+footer{background:linear-gradient(180deg, var(--navy) 0%, #102443 100%);}
+
 /* NAV */
 header{position:sticky; top:0; background:#fff; z-index:50; border-bottom:1px solid var(--line);}
-nav{display:flex; align-items:center; justify-content:space-between; padding:18px 0;}
+nav{display:flex; align-items:center; justify-content:space-between; padding:10px 0;}
 .logo{display:flex; align-items:center; gap:10px; font-weight:700; font-size:18px;}
 .logo-mark{width:34px; height:34px; border-radius:9px; background:var(--blue); display:flex; align-items:center; justify-content:center; color:#fff; font-size:16px; font-weight:700;}
 .navlinks{display:flex; gap:34px; font-size:14.5px; font-weight:500; color:var(--ink);}
@@ -187,10 +276,35 @@ footer{background:var(--navy); color:rgba(255,255,255,.7); padding:64px 0 28px; 
 @media (max-width: 900px){
   .wrap{padding:0 20px;}
   .grid-2, .feature-grid, .grid-3, .grid-4, .impact-grid, .footer-grid, .gallery-grid, .field-row{grid-template-columns:1fr 1fr;}
-  .navlinks{display:none; position:absolute; top:100%; left:0; right:0; background:#fff; flex-direction:column; padding:16px 20px; border-bottom:1px solid var(--line); gap:16px; box-shadow:0 4px 12px rgba(0,0,0,.08);}
-  .navlinks.open-mobile{display:flex;}
-  .nav-toggle{display:block;}
+  .nav-toggle{display:block; position:relative; z-index:140; background:#fff; border:1px solid var(--line); border-radius:10px; padding:6px 8px;}
   nav .btn-primary{display:none;} /* Hide desktop Donate button in nav */
+  .navlinks{
+    display:flex;
+    position:fixed;
+    top:72px;
+    right:-110%;
+    left:auto;
+    bottom:auto;
+    width:min(84vw, 320px);
+    max-width:calc(100vw - 24px);
+    max-height:calc(100vh - 88px);
+    overflow-y:auto;
+    background:linear-gradient(180deg, var(--navy) 0%, #132749 100%);
+    flex-direction:column;
+    justify-content:flex-start;
+    align-items:flex-start;
+    padding:24px 20px;
+    gap:14px;
+    opacity:0;
+    pointer-events:none;
+    transition:right .25s ease, opacity .25s ease;
+    z-index:120;
+    box-shadow:-16px 0 32px rgba(0,0,0,.22);
+    border-radius:0 0 0 18px;
+  }
+  .navlinks.open-mobile{right:0; opacity:1; pointer-events:auto;}
+  .navlinks a{color:#fff; font-size:20px; opacity:1; padding:6px 0;}
+  .navlinks a.active, .navlinks a:hover{color:#fff;}
   .section{padding:56px 0;}
   .page-hero{padding:48px 0 40px;}
   .page-hero h1{font-size:30px;}
@@ -324,6 +438,35 @@ footer{background:var(--navy); color:rgba(255,255,255,.7); padding:64px 0 28px; 
   </div>
 </section>
 
+<section class="section section-tight">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Why people trust us</span>
+        <h2>Care with accountability</h2>
+      </div>
+      <p>From free surgeries to public health camps, every program is designed to be transparent, practical, and deeply human.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <div class="icon-circle">✚</div>
+        <h4>Direct patient support</h4>
+        <p>We help patients access treatment when cost becomes the biggest barrier to survival.</p>
+      </div>
+      <div class="card">
+        <div class="icon-circle">✓</div>
+        <h4>Transparent giving</h4>
+        <p>Every contribution is tracked and shared through audited reports and public disclosures.</p>
+      </div>
+      <div class="card">
+        <div class="icon-circle">♡</div>
+        <h4>Community-led care</h4>
+        <p>We work with hospitals, volunteers, and local partners so support reaches where it matters most.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="features" style="margin-top:0;">
   <div class="wrap">
     <div class="feature-grid">
@@ -362,15 +505,15 @@ footer{background:var(--navy); color:rgba(255,255,255,.7); padding:64px 0 28px; 
     </div>
     <div class="grid-3 programs">
       <a href="programs.html" class="program-card">
-        <div class="img"><img src="https://images.unsplash.com/photo-1519494026892-80bbd3d616fc?w=600&q=80" alt="Surgery support"></div>
+        <div class="img"><img src="Free_Surgeries.jpg" alt="Surgery support"></div>
         <div class="body"><span class="tag">HOSPITAL SUPPORT</span><h4>Free &amp; subsidized surgeries</h4><p>Covering surgery, dialysis and cancer treatment costs for patients who can't pay.</p></div>
       </a>
       <a href="programs.html" class="program-card">
-        <div class="img"><img src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=600&q=80" alt="Health camp"></div>
+        <div class="img"><img src="free-medical-camp.webp" alt="Health camp"></div>
         <div class="body"><span class="tag">COMMUNITY HEALTH</span><h4>Rural health camps</h4><p>Screening, vaccination and awareness camps across villages in Bihar.</p></div>
       </a>
       <a href="programs.html" class="program-card">
-        <div class="img"><img src="https://images.unsplash.com/photo-1615461066841-6116e61058f4?w=600&q=80" alt="Blood donation"></div>
+        <div class="img"><img src="medical_aid.jpg" alt="Blood donation"></div>
         <div class="body"><span class="tag">COMMUNITY HEALTH</span><h4>Blood donation drives</h4><p>Regular drives run with local volunteers and hospital staff.</p></div>
       </a>
     </div>
@@ -410,15 +553,15 @@ footer{background:var(--navy); color:rgba(255,255,255,.7); padding:64px 0 28px; 
     </div>
     <div class="grid-3">
       <a href="resources.html#news" class="media-card">
-        <div class="img"><img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=500&q=80" alt="News"></div>
+        <div class="img"><img src="dylasis.jfif" alt="Dialysis Unit"></div>
         <div class="body"><div class="media-date">JUL 2026</div><h4>New dialysis unit inaugurated</h4><p>Funded entirely through the Medical Equipment Fund.</p></div>
       </a>
       <a href="resources.html#news" class="media-card">
-        <div class="img"><img src="https://images.unsplash.com/photo-1587746306681-8899e15f2a5e?w=500&q=80" alt="News"></div>
+        <div class="img"><img src="free-medical-camp.webp" alt="Medical Camp"></div>
         <div class="body"><div class="media-date">JUN 2026</div><h4>500 patients screened in Nalanda camp</h4><p>Three-day rural health and vaccination camp.</p></div>
       </a>
       <a href="resources.html#news" class="media-card">
-        <div class="img"><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=500&q=80" alt="News"></div>
+        <div class="img"><img src="indian-doctor-examine.jpg" alt="Annual Report"></div>
         <div class="body"><div class="media-date">MAY 2026</div><h4>Annual report published</h4><p>FY 2025-26 audited financials now available.</p></div>
       </a>
     </div>
@@ -460,13 +603,56 @@ footer{background:var(--navy); color:rgba(255,255,255,.7); padding:64px 0 28px; 
   </div>
 </footer>
 <script>
-// Mobile nav toggle
-document.querySelectorAll('.nav-toggle').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const nav = document.querySelector('.navlinks');
-    if (nav) nav.classList.toggle('open-mobile');
+(() => {
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.navlinks');
+  if (!navToggle || !navLinks) return;
+
+  const closeMenu = () => {
+    navLinks.classList.remove('open-mobile');
+    navToggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    navLinks.style.right = '-110%';
+    navLinks.style.opacity = '0';
+    navLinks.style.pointerEvents = 'none';
+  };
+
+  const openMenu = () => {
+    navLinks.classList.add('open-mobile');
+    navToggle.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+    navLinks.style.right = '0';
+    navLinks.style.opacity = '1';
+    navLinks.style.pointerEvents = 'auto';
+  };
+
+  navToggle.setAttribute('aria-expanded', 'false');
+
+  navToggle.addEventListener('click', (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    if (navLinks.classList.contains('open-mobile')) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
   });
-});
+
+  navLinks.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  document.addEventListener('click', (event) => {
+    if (window.innerWidth > 900) return;
+    if (!navLinks.contains(event.target) && event.target !== navToggle && !navToggle.contains(event.target)) {
+      closeMenu();
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 900) closeMenu();
+  });
+})();
 
 // Generic tab switching (used on Resources page)
 document.querySelectorAll('.tabs').forEach(tabGroup => {
