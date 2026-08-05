@@ -118,13 +118,13 @@ h1,h2,h3,h4{letter-spacing:-0.02em;}
 footer{background:linear-gradient(180deg, var(--navy) 0%, #102443 100%);}
 
 /* NAV */
-header{position:-webkit-sticky !important; position:sticky !important; top:0 !important; background:rgba(255,255,255,0.95); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); z-index:100 !important; border-bottom:1px solid var(--line);}
+header{position:-webkit-sticky !important; position:sticky !important; top:0 !important; background:rgba(255,255,255,0.98); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); z-index:100 !important; border-bottom:1px solid var(--line); box-shadow:0 2px 8px rgba(0,0,0,0.04);}
 nav{display:flex; align-items:center; justify-content:space-between; padding:12px 0;}
 .logo{display:flex; align-items:center; gap:10px; font-weight:700; font-size:18px;}
 .logo-mark{width:34px; height:34px; border-radius:9px; background:var(--blue); display:flex; align-items:center; justify-content:center; color:#fff; font-size:16px; font-weight:700;}
 .navlinks{display:flex; gap:34px; font-size:14.5px; font-weight:500; color:var(--ink);}
-.navlinks a{opacity:.75; transition:opacity .15s;}
-.navlinks a.active, .navlinks a:hover{opacity:1; color:var(--blue);}
+.navlinks a{opacity:1; transition:color .15s, opacity .15s;}
+.navlinks a.active, .navlinks a:hover{color:var(--blue);}
 .nav-toggle{display:none; background:none; border:none; font-size:22px;}
 
 .btn{display:inline-block; padding:11px 22px; border-radius:8px; font-size:14.5px; font-weight:600; cursor:pointer; border:none;}
