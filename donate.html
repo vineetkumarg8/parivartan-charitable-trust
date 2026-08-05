@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Donate — Parivartan</title>
+<style>
+:root{
+  --navy:#1B2A4A;
+  --navy-2:#233457;
+  --blue:#2F6FED;
+  --blue-light:#EAF1FE;
+  --ink:#101828;
+  --gray:#5B6472;
+  --line:#E4E7EC;
+  --bg:#FFFFFF;
+  --green:#1D9E75;
+  --green-light:#E1F5EE;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+body{
+  font-family:'Segoe UI', Inter, -apple-system, Arial, sans-serif;
+  color:var(--ink);
+  background:var(--bg);
+  line-height:1.5;
+}
+a{text-decoration:none; color:inherit;}
+img{display:block; max-width:100%;}
+ul{list-style:none;}
+.wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
+button{font-family:inherit; cursor:pointer;}
+
+/* NAV */
+header{position:sticky; top:0; background:#fff; z-index:50; border-bottom:1px solid var(--line);}
+nav{display:flex; align-items:center; justify-content:space-between; padding:18px 0;}
+.logo{display:flex; align-items:center; gap:10px; font-weight:700; font-size:18px;}
+.logo-mark{width:34px; height:34px; border-radius:9px; background:var(--blue); display:flex; align-items:center; justify-content:center; color:#fff; font-size:16px; font-weight:700;}
+.navlinks{display:flex; gap:34px; font-size:14.5px; font-weight:500; color:var(--ink);}
+.navlinks a{opacity:.75; transition:opacity .15s;}
+.navlinks a.active, .navlinks a:hover{opacity:1; color:var(--blue);}
+.nav-toggle{display:none; background:none; border:none; font-size:22px;}
+
+.btn{display:inline-block; padding:11px 22px; border-radius:8px; font-size:14.5px; font-weight:600; cursor:pointer; border:none;}
+.btn-primary{background:var(--blue); color:#fff;}
+.btn-primary:hover{background:#255bd0;}
+.btn-outline{background:transparent; color:var(--ink); border:1px solid var(--line);}
+.btn-outline:hover{border-color:var(--blue); color:var(--blue);}
+.btn-block{width:100%; text-align:center;}
+.btn[disabled]{opacity:.55; cursor:not-allowed;}
+
+/* PAGE HERO (interior pages) */
+.page-hero{background:var(--navy); color:#fff; padding:64px 0 56px;}
+.page-hero .eyebrow{background:rgba(255,255,255,.12); color:#fff;}
+.page-hero h1{font-size:36px; font-weight:700; letter-spacing:-.4px; margin-bottom:12px;}
+.page-hero p{color:rgba(255,255,255,.72); font-size:15.5px; max-width:560px;}
+.crumb{font-size:13px; color:rgba(255,255,255,.55); margin-bottom:16px;}
+.crumb a{color:rgba(255,255,255,.8);}
+
+.eyebrow{display:inline-flex; align-items:center; gap:8px; background:var(--blue-light); color:var(--blue); font-size:13px; font-weight:600; padding:6px 12px; border-radius:20px; margin-bottom:18px;}
+h1{font-size:44px; line-height:1.15; font-weight:700; letter-spacing:-0.5px;}
+h2{font-size:30px; font-weight:700; letter-spacing:-0.3px;}
+h3{font-size:20px; font-weight:700;}
+
+.section{padding:80px 0;}
+.section-tight{padding:48px 0;}
+.section-head{display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:40px; gap:24px; flex-wrap:wrap;}
+.section-head h2{margin-bottom:0;}
+.section-head p{color:var(--gray); font-size:15px; margin-top:8px; max-width:460px;}
+.section-alt{background:#FAFBFC;}
+
+/* GRIDS */
+.grid-2{display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:start;}
+.grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+.grid-4{display:grid; grid-template-columns:repeat(4,1fr); gap:20px;}
+.donate-grid{display:grid; grid-template-columns:1.4fr 1fr; gap:40px; align-items:flex-start;}
+
+/* CARDS */
+.card{border:1px solid var(--line); border-radius:16px; padding:26px 24px; background:#fff;}
+.card h4{font-size:16.5px; margin-bottom:8px;}
+.card p{font-size:13.5px; color:var(--gray); line-height:1.6;}
+.tag{display:inline-block; font-size:11.5px; font-weight:700; color:var(--blue); background:var(--blue-light); padding:4px 10px; border-radius:6px; margin-bottom:12px; letter-spacing:.2px;}
+.icon-circle{width:42px; height:42px; border-radius:11px; background:var(--blue-light); color:var(--blue); display:flex; align-items:center; justify-content:center; font-size:19px; margin-bottom:16px;}
+
+/* STAT / IMPACT */
+.impact{background:var(--blue-light); padding:56px 0; border-radius:20px;}
+.impact-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:24px; text-align:center;}
+.impact-num{font-size:32px; font-weight:700; color:var(--navy);}
+.impact-label{font-size:13px; color:var(--gray); margin-top:6px;}
+
+/* TRUSTEE / PEOPLE */
+.person{text-align:center;}
+.person img{width:100%; aspect-ratio:1; object-fit:cover; border-radius:14px; margin-bottom:14px;}
+.person h4{font-size:15px; margin-bottom:2px;}
+.person span{font-size:12.5px; color:var(--gray);}
+
+/* REPORT LIST */
+.report-row{display:flex; align-items:center; justify-content:space-between; padding:18px 22px; border:1px solid var(--line); border-radius:12px; margin-bottom:12px;}
+.report-row .meta{font-size:12.5px; color:var(--gray); margin-top:2px;}
+.report-icon{width:38px; height:38px; border-radius:9px; background:var(--blue-light); color:var(--blue); display:flex; align-items:center; justify-content:center; font-size:16px; margin-right:14px;}
+.report-left{display:flex; align-items:center;}
+
+/* FORMS */
+.form-card{border:1px solid var(--line); border-radius:18px; padding:32px; background:#fff;}
+.field-group{margin-bottom:18px;}
+.field-group label{display:block; font-size:13px; font-weight:600; margin-bottom:6px;}
+.field-group input, .field-group select, .field-group textarea{
+  width:100%; padding:12px 14px; border:1px solid var(--line); border-radius:9px; font-size:14.5px; font-family:inherit; color:var(--ink);
+}
+.field-group input:focus, .field-group select:focus, .field-group textarea:focus{outline:2px solid var(--blue); outline-offset:1px; border-color:var(--blue);}
+.field-row{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+.pill-select{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:18px;}
+.pill{padding:10px 18px; border:1px solid var(--line); border-radius:8px; font-size:14px; font-weight:600; cursor:pointer; background:#fff;}
+.pill.active{background:var(--blue); border-color:var(--blue); color:#fff;}
+.helper{font-size:12.5px; color:var(--gray); margin-top:-10px; margin-bottom:16px;}
+.form-msg{display:none; padding:14px 16px; border-radius:10px; font-size:13.5px; margin-top:16px;}
+.form-msg.success{display:block; background:var(--green-light); color:#0F6E56;}
+.form-msg.error{display:block; background:#FCEBEB; color:#A32D2D;}
+
+/* SUMMARY CARD */
+.summary{background:var(--navy); color:#fff; border-radius:18px; padding:28px;}
+.summary-row{display:flex; justify-content:space-between; font-size:14px; padding:10px 0; border-bottom:1px solid rgba(255,255,255,.12);}
+.summary-row.total{font-weight:700; font-size:17px; border-bottom:none; padding-top:16px;}
+
+/* TABS */
+.tabs{display:flex; gap:8px; border-bottom:1px solid var(--line); margin-bottom:36px; flex-wrap:wrap;}
+.tab-btn{padding:12px 20px; font-size:14.5px; font-weight:600; color:var(--gray); border-bottom:2px solid transparent; background:none; border-top:none; border-left:none; border-right:none;}
+.tab-btn.active{color:var(--blue); border-bottom-color:var(--blue);}
+.tab-panel{display:none;}
+.tab-panel.active{display:block;}
+
+/* GALLERY */
+.gallery-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:14px;}
+.gallery-item{border-radius:12px; overflow:hidden; cursor:pointer; aspect-ratio:1; position:relative;}
+.gallery-item img{width:100%; height:100%; object-fit:cover; transition:transform .25s;}
+.gallery-item:hover img{transform:scale(1.06);}
+.lightbox{display:none; position:fixed; inset:0; background:rgba(16,20,30,.88); z-index:200; align-items:center; justify-content:center; padding:40px;}
+.lightbox.open{display:flex;}
+.lightbox img{max-width:800px; max-height:80vh; border-radius:12px;}
+.lightbox-close{position:absolute; top:28px; right:36px; color:#fff; font-size:28px; background:none; border:none; cursor:pointer;}
+
+/* EVENTS */
+.event-row{display:flex; gap:20px; align-items:center; padding:20px; border:1px solid var(--line); border-radius:14px; margin-bottom:14px;}
+.event-date{background:var(--blue-light); color:var(--blue); border-radius:10px; text-align:center; padding:10px 14px; min-width:64px;}
+.event-date .d{font-size:20px; font-weight:700; line-height:1;}
+.event-date .m{font-size:11px; font-weight:700; text-transform:uppercase;}
+.event-body h4{font-size:15px; margin-bottom:4px;}
+.event-body p{font-size:13px; color:var(--gray);}
+
+/* ACCORDION (legal) */
+.accordion-item{border:1px solid var(--line); border-radius:12px; margin-bottom:12px; overflow:hidden;}
+.accordion-head{display:flex; justify-content:space-between; align-items:center; padding:18px 22px; background:#fff; border:none; width:100%; font-size:15px; font-weight:600;}
+.accordion-head .chevron{transition:transform .2s;}
+.accordion-item.open .chevron{transform:rotate(180deg);}
+.accordion-body{max-height:0; overflow:hidden; transition:max-height .25s ease;}
+.accordion-item.open .accordion-body{max-height:600px;}
+.accordion-body-inner{padding:0 22px 20px; font-size:13.5px; color:var(--gray); line-height:1.7;}
+
+/* NEWS/PROGRAM CARDS reused */
+.media-card{border:1px solid var(--line); border-radius:16px; overflow:hidden;}
+.media-card .img{height:170px;}
+.media-card .img img{width:100%; height:100%; object-fit:cover;}
+.media-card .body{padding:18px 20px 22px;}
+.media-card h4{font-size:15.5px; margin-bottom:6px; line-height:1.4;}
+.media-card p{font-size:13px; color:var(--gray);}
+.media-date{font-size:12px; color:var(--blue); font-weight:600; margin-bottom:8px;}
+
+/* FEATURE STRIP */
+.features{background:var(--navy); padding:64px 0;}
+.feature{background:var(--navy-2); border-radius:14px; padding:26px 22px; color:#fff;}
+.feature.on{background:var(--blue);}
+.feature-icon{width:38px; height:38px; border-radius:10px; background:rgba(255,255,255,.14); display:flex; align-items:center; justify-content:center; margin-bottom:16px; font-size:17px;}
+.feature h4{font-size:15.5px; margin-bottom:6px;}
+.feature p{font-size:13px; color:rgba(255,255,255,.68); line-height:1.5;}
+.feature.on p{color:rgba(255,255,255,.85);}
+
+/* FOOTER */
+footer{background:var(--navy); color:rgba(255,255,255,.7); padding:64px 0 28px; margin-top:40px;}
+.footer-grid{display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:40px; padding-bottom:40px; border-bottom:1px solid rgba(255,255,255,.12);}
+.footer-grid h5{color:#fff; font-size:14px; margin-bottom:16px;}
+.footer-grid a{display:block; font-size:13.5px; margin-bottom:10px; color:rgba(255,255,255,.65);}
+.footer-grid a:hover{color:#fff;}
+.foot-bottom{display:flex; justify-content:space-between; padding-top:24px; font-size:12.5px; flex-wrap:wrap; gap:10px;}
+
+/* SKIP LINK */
+.skip-link{position:absolute; left:-999px; top:0; background:var(--blue); color:#fff; padding:10px 16px; z-index:999;}
+.skip-link:focus{left:16px; top:16px;}
+
+@media (max-width: 900px){
+  .wrap{padding:0 20px;}
+  .grid-2, .feature-grid, .grid-3, .grid-4, .impact-grid, .footer-grid, .gallery-grid, .field-row, .donate-grid{grid-template-columns:1fr;}
+  .navlinks{display:none; position:absolute; top:100%; left:0; right:0; background:#fff; flex-direction:column; padding:16px 20px; border-bottom:1px solid var(--line); gap:16px; box-shadow:0 4px 12px rgba(0,0,0,.08);}
+  .navlinks.open-mobile{display:flex;}
+  .nav-toggle{display:block;}
+  nav .btn-primary{display:none;} /* Hide desktop Donate button in nav */
+  .section{padding:56px 0;}
+  .page-hero{padding:48px 0 40px;}
+  .page-hero h1{font-size:30px;}
+  h2{font-size:26px;}
+  .donate-grid{gap:28px;}
+}
+@media (max-width: 600px){
+  .wrap{padding:0 16px;}
+  .grid-2, .grid-3, .grid-4, .gallery-grid, .impact-grid, .footer-grid, .field-row, .donate-grid{grid-template-columns:1fr;}
+  h1, .hero h1{font-size:28px;}
+  h2{font-size:24px;}
+  h3{font-size:18px;}
+  .section{padding:40px 0;}
+  .section-tight{padding:32px 0;}
+  .section-head{margin-bottom:28px;}
+  .card{padding:20px 18px;}
+  .form-card{padding:24px 20px;}
+  .pill-select{gap:8px;}
+  .pill{padding:9px 14px; font-size:13px;}
+  .event-row{flex-direction:column; align-items:flex-start; gap:14px;}
+  .report-row{flex-direction:column; align-items:flex-start; gap:10px;}
+  .report-left{margin-bottom:8px;}
+  footer{padding:48px 0 20px;}
+  .summary{padding:22px 20px;}
+  .donate-grid{gap:24px;}
+}
+
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a href="index.html" class="logo"><span class="logo-mark">P</span> Parivartan</a>
+      <div class="navlinks">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="programs.html">Programs</a>
+        <a href="donate.html" class="active">Donate</a>
+        <a href="involve.html">Get Involved</a>
+        <a href="resources.html">Resources</a>
+      </div>
+      <button class="nav-toggle" aria-label="Menu">&#9776;</button>
+      <a href="donate.html" class="btn btn-primary">Donate Now</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<section class="page-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="index.html">Home</a> / Donate</div>
+    <span class="eyebrow">Give directly to a patient in need</span>
+    <h1>Make a donation</h1>
+    <p>Choose a fund, choose an amount, and see exactly what it supports before you give.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap donate-grid">
+    <div class="form-card">
+      <h3 style="margin-bottom:20px;">Donation details</h3>
+      <form id="donate-form">
+        <div class="field-group">
+          <label>Amount</label>
+          <div class="pill-select">
+            <button type="button" class="pill active" data-amount-pill="1000">₹1,000</button>
+            <button type="button" class="pill" data-amount-pill="2500">₹2,500</button>
+            <button type="button" class="pill" data-amount-pill="5000">₹5,000</button>
+            <button type="button" class="pill" data-amount-pill="10000">₹10,000</button>
+          </div>
+          <input type="number" id="custom-amount" placeholder="Or enter a custom amount (₹)" min="1">
+        </div>
+
+        <div class="field-group">
+          <label for="fund-select">Donation category</label>
+          <select id="fund-select">
+            <option>Poor Patient Fund</option>
+            <option>Medical Equipment Fund</option>
+            <option>Hospital Infrastructure</option>
+            <option>Child Health</option>
+            <option>Women's Health</option>
+            <option>Cancer Care</option>
+            <option>Community Health Programs</option>
+            <option>Education &amp; Awareness</option>
+            <option>General Donation</option>
+          </select>
+        </div>
+
+        <div class="field-group">
+          <label>Frequency</label>
+          <div class="pill-select">
+            <button type="button" class="pill active" data-freq-pill="One-time">One-time</button>
+            <button type="button" class="pill" data-freq-pill="Monthly">Monthly</button>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field-group">
+            <label for="donor-name">Full name</label>
+            <input type="text" id="donor-name" placeholder="Your name">
+          </div>
+          <div class="field-group">
+            <label for="donor-email">Email</label>
+            <input type="email" id="donor-email" placeholder="you@example.com">
+          </div>
+        </div>
+        <div class="field-group">
+          <label for="donor-pan">PAN (for 80G tax receipt — optional)</label>
+          <input type="text" id="donor-pan" placeholder="ABCDE1234F">
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Donate Now</button>
+        <div class="form-msg" id="donate-msg"></div>
+      </form>
+    </div>
+
+    <div>
+      <div class="summary" style="margin-bottom:20px;">
+        <h3 style="color:#fff; margin-bottom:14px;">Summary</h3>
+        <div class="summary-row"><span>Amount</span><span id="sum-amount">₹1,000</span></div>
+        <div class="summary-row"><span>Fund</span><span id="sum-fund">Poor Patient Fund</span></div>
+        <div class="summary-row"><span>Frequency</span><span id="sum-freq">One-time</span></div>
+        <div class="summary-row total"><span>Total</span><span id="sum-total">₹1,000</span></div>
+      </div>
+      <div class="card">
+        <h4>Other ways to give</h4>
+        <div style="margin-top:14px; display:flex; gap:16px; align-items:center;">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=upi://pay?pa=parivartan@upi" alt="UPI QR code" style="width:90px; height:90px; border:1px solid var(--line); border-radius:8px;">
+          <div style="font-size:13px; color:var(--gray);">
+            <div><strong style="color:var(--ink);">UPI ID</strong><br>parivartan@upi</div>
+          </div>
+        </div>
+        <div style="margin-top:16px; font-size:13px; color:var(--gray); line-height:1.9;">
+          <div><strong style="color:var(--ink);">Bank transfer</strong></div>
+          <div>A/C name: Parivartan</div>
+          <div>A/C no: 0123456789012</div>
+          <div>IFSC: SBIN0001234</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="how-used">
+  <div class="wrap">
+    <div class="section-head"><div><h2>How your donation is used</h2></div></div>
+    <div class="grid-4">
+      <div class="card"><div class="icon-circle">&#128137;</div><h4>Direct patient care</h4><p>~78% funds surgeries, dialysis, and treatment costs directly.</p></div>
+      <div class="card"><div class="icon-circle">&#127973;</div><h4>Camps &amp; outreach</h4><p>~14% supports rural camps and awareness drives.</p></div>
+      <div class="card"><div class="icon-circle">&#128301;</div><h4>Equipment</h4><p>~6% goes toward medical equipment for the hospital.</p></div>
+      <div class="card"><div class="icon-circle">&#128203;</div><h4>Administration</h4><p>~2% covers audit, reporting, and admin — kept deliberately low.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="receipts">
+  <div class="wrap grid-2">
+    <div>
+      <h2 style="margin-bottom:16px;">Donation receipts &amp; tax benefits</h2>
+      <p style="color:var(--gray); font-size:15px; line-height:1.7;">Every donation above ₹500 receives an automatically generated receipt by email, valid for tax exemption under Section 80G. Enter your PAN at checkout to have it included on your receipt.</p>
+    </div>
+    <div class="card">
+      <h4>Need help?</h4>
+      <p>If a receipt hasn't arrived within 24 hours, or you need a duplicate for a past donation, our team can resend it.</p>
+      <a href="resources.html#contact" class="btn btn-outline" style="margin-top:14px;">Contact us</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="logo" style="color:#fff; margin-bottom:14px;"><span class="logo-mark">P</span> Parivartan</div>
+        <p style="font-size:13.5px; max-width:280px;">Promoted and supported by Dr. Bimal Hospital. Registered charitable trust serving Bihar since 2010.</p>
+      </div>
+      <div><h5>Explore</h5><a href="about.html">About Us</a><a href="programs.html">Programs</a><a href="involve.html">Get Involved</a><a href="resources.html">Resources</a></div>
+      <div><h5>Donate</h5><a href="donate.html">Donation categories</a><a href="donate.html#how-used">How funds are used</a><a href="donate.html#receipts">Tax receipts</a></div>
+      <div><h5>Legal</h5><a href="legal.html#privacy">Privacy policy</a><a href="legal.html#donation">Donation policy</a><a href="legal.html#registration">Registration &amp; PAN</a></div>
+    </div>
+    <div class="foot-bottom"><span>&copy; 2026 Parivartan. All rights reserved.</span><span>Patna, Bihar</span></div>
+  </div>
+</footer>
+<script>
+// Mobile nav toggle
+document.querySelectorAll('.nav-toggle').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const nav = document.querySelector('.navlinks');
+    if (nav) nav.classList.toggle('open-mobile');
+  });
+});
+
+// Generic tab switching (used on Resources page)
+document.querySelectorAll('.tabs').forEach(tabGroup => {
+  const buttons = tabGroup.querySelectorAll('.tab-btn');
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.getAttribute('data-tab');
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      const panel = document.getElementById(target);
+      if (panel) panel.classList.add('active');
+    });
+  });
+});
+
+// Accordion (Legal page)
+document.querySelectorAll('.accordion-head').forEach(head => {
+  head.addEventListener('click', () => {
+    const item = head.closest('.accordion-item');
+    const wasOpen = item.classList.contains('open');
+    item.parentElement.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+
+// Gallery lightbox
+const lightbox = document.getElementById('lightbox');
+if (lightbox) {
+  const lightboxImg = lightbox.querySelector('img');
+  document.querySelectorAll('.gallery-item img').forEach(img => {
+    img.addEventListener('click', () => {
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightbox.classList.add('open');
+    });
+  });
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox || e.target.classList.contains('lightbox-close')) {
+      lightbox.classList.remove('open');
+    }
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') lightbox.classList.remove('open');
+  });
+}
+
+// Donation form: pill selects + live summary + validation
+const donateForm = document.getElementById('donate-form');
+if (donateForm) {
+  const amountPills = donateForm.querySelectorAll('[data-amount-pill]');
+  const customInput = document.getElementById('custom-amount');
+  const fundSelect = document.getElementById('fund-select');
+  const freqPills = donateForm.querySelectorAll('[data-freq-pill]');
+  const sumAmount = document.getElementById('sum-amount');
+  const sumFund = document.getElementById('sum-fund');
+  const sumFreq = document.getElementById('sum-freq');
+  const sumTotal = document.getElementById('sum-total');
+  let selectedAmount = 1000;
+  let selectedFreq = 'One-time';
+
+  function refreshSummary() {
+    sumAmount.textContent = '₹' + selectedAmount.toLocaleString('en-IN');
+    sumFund.textContent = fundSelect.value;
+    sumFreq.textContent = selectedFreq;
+    sumTotal.textContent = '₹' + selectedAmount.toLocaleString('en-IN') + (selectedFreq === 'Monthly' ? ' / month' : '');
+  }
+
+  amountPills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      amountPills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      selectedAmount = parseInt(pill.getAttribute('data-amount-pill'), 10);
+      customInput.value = '';
+      refreshSummary();
+    });
+  });
+  customInput.addEventListener('input', () => {
+    if (customInput.value) {
+      amountPills.forEach(p => p.classList.remove('active'));
+      selectedAmount = parseInt(customInput.value, 10) || 0;
+      refreshSummary();
+    }
+  });
+  freqPills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      freqPills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      selectedFreq = pill.getAttribute('data-freq-pill');
+      refreshSummary();
+    });
+  });
+  fundSelect.addEventListener('change', refreshSummary);
+  refreshSummary();
+
+  donateForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('donor-name').value.trim();
+    const email = document.getElementById('donor-email').value.trim();
+    const msg = document.getElementById('donate-msg');
+    if (!name || !email || selectedAmount <= 0) {
+      msg.textContent = 'Please fill in your name, email, and a valid amount.';
+      msg.className = 'form-msg error';
+      return;
+    }
+    msg.textContent = `Thank you, ${name}. Your ${selectedFreq.toLowerCase()} donation of ₹${selectedAmount.toLocaleString('en-IN')} to the ${fundSelect.value} has been recorded. A receipt will be sent to ${email}.`;
+    msg.className = 'form-msg success';
+    donateForm.querySelector('button[type=submit]').setAttribute('disabled', 'true');
+  });
+}
+
+// Generic contact/volunteer/CSR form validation + success message
+document.querySelectorAll('form[data-validate]').forEach(form => {
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const required = form.querySelectorAll('[required]');
+    let valid = true;
+    required.forEach(field => {
+      if (!field.value.trim()) valid = false;
+    });
+    const msg = form.querySelector('.form-msg');
+    if (!valid) {
+      msg.textContent = 'Please fill in all required fields.';
+      msg.className = 'form-msg error';
+      return;
+    }
+    msg.textContent = form.getAttribute('data-success') || 'Thank you — we\'ve received your submission.';
+    msg.className = 'form-msg success';
+    form.reset();
+    form.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+  });
+});
+
+// Volunteer interest pills (multi-select, feeds a hidden field)
+document.querySelectorAll('[data-multi-pill]').forEach(group => {
+  const hidden = document.getElementById(group.getAttribute('data-multi-pill'));
+  group.querySelectorAll('.pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      pill.classList.toggle('active');
+      const values = [...group.querySelectorAll('.pill.active')].map(p => p.textContent.trim());
+      if (hidden) hidden.value = values.join(', ');
+    });
+  });
+});
+
+</script>
+</body>
+</html>
