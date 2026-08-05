@@ -177,13 +177,48 @@ h3{font-size:20px; font-weight:700;}
 .accordion-body-inner{padding:0 22px 20px; font-size:13.5px; color:var(--gray); line-height:1.7;}
 
 /* NEWS/PROGRAM CARDS reused */
-.media-card{border:1px solid var(--line); border-radius:16px; overflow:hidden;}
-.media-card .img{height:170px;}
-.media-card .img img{width:100%; height:100%; object-fit:cover;}
+.media-card{border:1px solid var(--line); border-radius:16px; overflow:hidden; transition:all .3s; background:#fff;}
+.media-card:hover{transform:translateY(-6px); box-shadow:0 16px 48px rgba(47,111,237,.18); border-color:rgba(47,111,237,.3);}
+.media-card .img{height:170px; overflow:hidden;}
+.media-card .img img{width:100%; height:100%; object-fit:cover; transition:transform .4s;}
+.media-card:hover .img img{transform:scale(1.08);}
 .media-card .body{padding:18px 20px 22px;}
 .media-card h4{font-size:15.5px; margin-bottom:6px; line-height:1.4;}
 .media-card p{font-size:13px; color:var(--gray);}
 .media-date{font-size:12px; color:var(--blue); font-weight:600; margin-bottom:8px;}
+
+/* NEWS GRID TEMPLATE LAYOUT */
+.news-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:start;}
+.news-featured{grid-row:span 2; display:flex; flex-direction:column; border:1px solid var(--line); border-radius:16px; overflow:hidden; transition:all .3s; background:#fff; height:100%;}
+.news-featured:hover{transform:translateY(-6px); box-shadow:0 16px 48px rgba(47,111,237,.18); border-color:rgba(47,111,237,.3);}
+.news-featured .img{height:340px; overflow:hidden; position:relative;}
+.news-featured .img img{width:100%; height:100%; object-fit:cover; transition:transform .4s;}
+.news-featured:hover .img img{transform:scale(1.08);}
+.news-featured .body{padding:24px 28px 28px; flex:1; display:flex; flex-direction:column;}
+.news-featured .media-date{font-size:13px; color:var(--gray); font-weight:500; margin-bottom:12px;}
+.news-featured h3{font-size:22px; margin-bottom:12px; line-height:1.35; color:var(--navy);}
+.news-featured p{font-size:14.5px; color:var(--gray); line-height:1.65; margin-bottom:20px; flex:1;}
+.news-featured .read-more{color:var(--ink); font-size:14px; font-weight:600; display:inline-flex; align-items:center; gap:8px; transition:all .2s;}
+.news-featured .read-more:hover{color:var(--blue); gap:12px;}
+.news-featured .read-more::after{content:'→'; font-size:18px;}
+
+.news-small{display:flex; gap:16px; border:1px solid var(--line); border-radius:16px; overflow:hidden; transition:all .3s; background:#fff; padding:18px;}
+.news-small:hover{transform:translateY(-4px); box-shadow:0 12px 32px rgba(47,111,237,.15); border-color:rgba(47,111,237,.25);}
+.news-small .img{min-width:180px; width:180px; height:140px; border-radius:12px; overflow:hidden;}
+.news-small .img img{width:100%; height:100%; object-fit:cover; transition:transform .4s;}
+.news-small:hover .img img{transform:scale(1.08);}
+.news-small .body{display:flex; flex-direction:column; justify-content:space-between; flex:1; padding:4px 8px;}
+.news-small .media-date{font-size:12px; color:var(--gray); font-weight:500; margin-bottom:8px;}
+.news-small h4{font-size:16px; margin-bottom:8px; line-height:1.4; color:var(--navy);}
+.news-small p{font-size:13px; color:var(--gray); line-height:1.6; margin-bottom:12px; flex:1;}
+.news-small .read-more{color:var(--ink); font-size:13px; font-weight:600; display:inline-flex; align-items:center; gap:6px; transition:all .2s;}
+.news-small .read-more:hover{color:var(--blue); gap:10px;}
+.news-small .read-more::after{content:'→'; font-size:16px;}
+
+.view-all-news{text-align:right; margin-top:32px;}
+.view-all-news a{color:var(--ink); font-size:14.5px; font-weight:600; display:inline-flex; align-items:center; gap:8px; transition:all .2s;}
+.view-all-news a:hover{color:var(--blue); gap:12px;}
+.view-all-news a::after{content:'→'; font-size:18px;}
 
 /* FEATURE STRIP */
 .features{background:var(--navy); padding:64px 0;}
@@ -208,7 +243,7 @@ footer{background:var(--navy); color:rgba(255,255,255,.7); padding:64px 0 28px; 
 
 @media (max-width: 900px){
   .wrap{padding:0 20px;}
-  .grid-2, .feature-grid, .grid-3, .grid-4, .impact-grid, .footer-grid, .gallery-grid, .field-row{grid-template-columns:1fr 1fr;}
+  .grid-2, .feature-grid, .grid-3, .grid-4, .impact-grid, .footer-grid, .gallery-grid, .field-row, .news-grid{grid-template-columns:1fr 1fr;}
   .navlinks{display:flex; position:absolute; top:100%; left:0; right:0; background:#fff; flex-direction:column; padding:0 20px; border-bottom:1px solid var(--line); gap:0; box-shadow:0 4px 12px rgba(0,0,0,.08); max-height:0; overflow:hidden; opacity:0; transition:max-height .4s ease, opacity .3s ease, padding .4s ease;}
   .navlinks.open-mobile{max-height:400px; opacity:1; padding:10px 20px; gap:4px;}
   .navlinks a{padding:10px 12px; font-size:14px; opacity:.75; transition:opacity .2s, color .2s; border-radius:6px;}
@@ -221,10 +256,14 @@ footer{background:var(--navy); color:rgba(255,255,255,.7); padding:64px 0 28px; 
   h2{font-size:26px;}
   .tabs{gap:4px;}
   .tab-btn{padding:10px 16px; font-size:13.5px;}
+  .news-small{flex-direction:column; padding:0;}
+  .news-small .img{min-width:100%; width:100%; height:160px; border-radius:0;}
+  .news-small .body{padding:18px 20px 22px;}
 }
 @media (max-width: 600px){
   .wrap{padding:0 16px;}
-  .grid-2, .grid-3, .grid-4, .gallery-grid, .impact-grid, .footer-grid, .field-row{grid-template-columns:1fr;}
+  .grid-2, .grid-3, .grid-4, .gallery-grid, .impact-grid, .footer-grid, .field-row, .news-grid{grid-template-columns:1fr;}
+  .news-featured{grid-row:span 1;}
   h1, .hero h1{font-size:28px;}
   h2{font-size:24px;}
   h3{font-size:18px;}
@@ -405,31 +444,71 @@ footer{background:var(--navy); color:rgba(255,255,255,.7); padding:64px 0 28px; 
     </div>
 
     <div class="tab-panel" id="tab-news">
-      <div class="grid-3">
-        <div class="media-card">
-          <div class="img"><img src="dylasis.jfif" alt="New dialysis unit"></div>
-          <div class="body"><div class="media-date">JUL 2026</div><h4>New dialysis unit inaugurated</h4><p>Funded entirely through the Medical Equipment Fund.</p></div>
-        </div>
-        <div class="media-card">
-          <div class="img"><img src="free-medical-camp.webp" alt="Nalanda camp"></div>
-          <div class="body"><div class="media-date">JUN 2026</div><h4>500 patients screened in Nalanda camp</h4><p>Three-day rural health and vaccination camp.</p></div>
-        </div>
-        <div class="media-card">
-          <div class="img"><img src="medical_aid.jpg" alt="Annual report"></div>
-          <div class="body"><div class="media-date">MAY 2026</div><h4>Annual report published</h4><p>FY 2025-26 audited financials now available.</p></div>
-        </div>
-        <div class="media-card">
-          <div class="img"><img src="indian-doctor-examine.jpg" alt="Healthcare awards"></div>
-          <div class="body"><div class="media-date">APR 2026</div><h4>Trust recognized at Bihar Healthcare Awards</h4><p>Awarded for community outreach impact.</p></div>
-        </div>
-        <div class="media-card">
-          <div class="img"><img src="cancer.jfif" alt="Patient milestone"></div>
-          <div class="body"><div class="media-date">MAR 2026</div><h4>10,000th patient milestone reached</h4><p>A decade of cumulative patient support.</p></div>
-        </div>
-        <div class="media-card">
-          <div class="img"><img src="Free_Surgeries.jpg" alt="Screening van"></div>
-          <div class="body"><div class="media-date">FEB 2026</div><h4>New mobile screening van added</h4><p>Extends camp reach to two more districts.</p></div>
-        </div>
+      <div class="news-grid">
+        <!-- Featured Large News Card -->
+        <a href="#" class="news-featured">
+          <div class="img"><img src="dylasis.jfif" alt="Dialysis Unit"></div>
+          <div class="body">
+            <div class="media-date">November 30, 2025</div>
+            <h3>New Dialysis Unit Inaugurated at Dr. Bimal Hospital</h3>
+            <p>Parivartan Trust proudly announced the launch of a new state-of-the-art dialysis unit, fully funded through the Medical Equipment Fund. This facility will provide life-saving treatment to patients across Bihar who cannot afford such care...</p>
+            <span class="read-more">Read More</span>
+          </div>
+        </a>
+
+        <!-- Small News Cards -->
+        <a href="#" class="news-small">
+          <div class="img"><img src="free-medical-camp.webp" alt="Medical Camp"></div>
+          <div class="body">
+            <div class="media-date">December 30, 2025</div>
+            <h4>500 Patients Screened in Rural Nalanda Camp</h4>
+            <p>In a major health initiative, this time our three-day camp...</p>
+            <span class="read-more">Read More</span>
+          </div>
+        </a>
+
+        <a href="#" class="news-small">
+          <div class="img"><img src="indian-doctor-examine.jpg" alt="Healthcare Recognition"></div>
+          <div class="body">
+            <div class="media-date">December 30, 2025</div>
+            <h4>Parivartan Recognized at Bihar Healthcare Awards</h4>
+            <p>In a major capacity expansion move, this time our impact reaches more...</p>
+            <span class="read-more">Read More</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Additional News Items -->
+      <div class="news-grid" style="margin-top:24px;">
+        <a href="#" class="news-featured">
+          <div class="img"><img src="medical_aid.jpg" alt="Annual Report"></div>
+          <div class="body">
+            <div class="media-date">May 30, 2026</div>
+            <h3>Annual Report FY 2025-26 Published</h3>
+            <p>Parivartan Trust has released its comprehensive annual report for fiscal year 2025-26, showcasing the impact made across Bihar. The audited financials demonstrate complete transparency in fund utilization...</p>
+            <span class="read-more">Read More</span>
+          </div>
+        </a>
+
+        <a href="#" class="news-small">
+          <div class="img"><img src="cancer.jfif" alt="Patient Milestone"></div>
+          <div class="body">
+            <div class="media-date">March 30, 2026</div>
+            <h4>10,000th Patient Milestone Reached</h4>
+            <p>A decade of cumulative patient support and impact...</p>
+            <span class="read-more">Read More</span>
+          </div>
+        </a>
+
+        <a href="#" class="news-small">
+          <div class="img"><img src="Free_Surgeries.jpg" alt="Screening Van"></div>
+          <div class="body">
+            <div class="media-date">February 30, 2026</div>
+            <h4>New Mobile Screening Van Added to Fleet</h4>
+            <p>Extends camp reach to two more districts across Bihar...</p>
+            <span class="read-more">Read More</span>
+          </div>
+        </a>
       </div>
     </div>
 
