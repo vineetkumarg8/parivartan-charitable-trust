@@ -138,12 +138,32 @@ h3{font-size:20px; font-weight:700;}
 .lightbox-close{position:absolute; top:28px; right:36px; color:#fff; font-size:28px; background:none; border:none; cursor:pointer;}
 
 /* EVENTS */
-.event-row{display:flex; gap:20px; align-items:center; padding:20px; border:1px solid var(--line); border-radius:14px; margin-bottom:14px;}
-.event-date{background:var(--blue-light); color:var(--blue); border-radius:10px; text-align:center; padding:10px 14px; min-width:64px;}
-.event-date .d{font-size:20px; font-weight:700; line-height:1;}
-.event-date .m{font-size:11px; font-weight:700; text-transform:uppercase;}
-.event-body h4{font-size:15px; margin-bottom:4px;}
-.event-body p{font-size:13px; color:var(--gray);}
+.events-header{display:flex; justify-content:space-between; align-items:center; margin-bottom:32px; padding:24px; background:var(--blue-light); border-radius:16px;}
+.events-header-left h3{font-size:22px; margin-bottom:4px; color:var(--navy);}
+.events-header-left p{font-size:14px; color:var(--gray);}
+.events-header-right{display:flex; gap:12px;}
+.events-search{padding:11px 18px; border:1px solid var(--line); border-radius:10px; background:#fff; display:flex; align-items:center; gap:10px; font-size:14px; color:var(--gray); min-width:280px;}
+.events-search input{border:none; outline:none; background:transparent; width:100%; font-size:14px;}
+.filter-btn{padding:11px 16px; border:1px solid var(--line); border-radius:10px; background:#fff; cursor:pointer; display:flex; align-items:center; gap:6px;}
+
+.events-grid{display:grid; grid-template-columns:repeat(2, 1fr); gap:24px;}
+.event-card{background:#fff; border:1px solid var(--line); border-radius:16px; overflow:hidden; transition:all .2s; display:flex; flex-direction:column;}
+.event-card:hover{box-shadow:0 6px 20px rgba(0,0,0,.08); transform:translateY(-2px);}
+.event-image{width:100%; height:200px; overflow:hidden; position:relative;}
+.event-image img{width:100%; height:100%; object-fit:cover;}
+.event-badge{position:absolute; top:14px; right:14px; background:var(--blue); color:#fff; padding:7px 16px; border-radius:8px; font-size:12px; font-weight:700;}
+.event-content{padding:20px 22px; flex:1; display:flex; flex-direction:column;}
+.event-title{font-size:17px; font-weight:700; color:var(--navy); margin-bottom:10px; line-height:1.3;}
+.event-location{font-size:13.5px; color:var(--gray); margin-bottom:12px; display:flex; align-items:flex-start; gap:6px;}
+.event-description{font-size:14px; color:var(--gray); line-height:1.6; margin-bottom:16px; flex:1;}
+.event-footer{display:flex; justify-content:space-between; align-items:center; padding-top:14px; border-top:1px solid var(--line); margin-top:auto;}
+.event-participants{display:flex; align-items:center; gap:10px;}
+.event-avatars{display:flex;}
+.event-avatar{width:32px; height:32px; border-radius:50%; border:2px solid #fff; margin-left:-10px; background:var(--blue-light); display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:600; color:var(--blue); overflow:hidden;}
+.event-avatar:first-child{margin-left:0;}
+.event-avatar img{width:100%; height:100%; object-fit:cover;}
+.event-count{font-size:13px; color:var(--gray); white-space:nowrap;}
+.event-time{font-size:13.5px; font-weight:600; color:var(--ink);}
 
 /* ACCORDION (legal) */
 .accordion-item{border:1px solid var(--line); border-radius:12px; margin-bottom:12px; overflow:hidden;}
@@ -211,7 +231,10 @@ footer{background:var(--navy); color:rgba(255,255,255,.7); padding:64px 0 28px; 
   .form-card{padding:24px 20px;}
   .pill-select{gap:8px;}
   .pill{padding:9px 14px; font-size:13px;}
-  .event-row{flex-direction:column; align-items:flex-start; gap:14px;}
+  .events-header{flex-direction:column; gap:16px;}
+  .events-header-right{width:100%; flex-direction:column;}
+  .events-search{min-width:auto; width:100%;}
+  .events-grid{grid-template-columns:1fr;}
   .report-row{flex-direction:column; align-items:flex-start; gap:10px;}
   .report-left{margin-bottom:8px;}
   footer{padding:48px 0 20px;}
@@ -227,7 +250,7 @@ footer{background:var(--navy); color:rgba(255,255,255,.7); padding:64px 0 28px; 
 <header>
   <div class="wrap">
     <nav>
-      <a href="index.html" class="logo"><span class="logo-mark">P</span> Parivartan</a>
+      <a href="index.html" class="logo"><img src="parivartan_trust_logo.svg" alt="Parivartan Trust" style="height:55px;"></a>
       <div class="navlinks">
         <a href="index.html">Home</a>
         <a href="about.html">About Us</a>
@@ -261,63 +284,163 @@ footer{background:var(--navy); color:rgba(255,255,255,.7); padding:64px 0 28px; 
     </div>
 
     <div class="tab-panel active" id="tab-events">
-      <div class="event-row">
-        <div class="event-date"><div class="d">18</div><div class="m">Aug</div></div>
-        <div class="event-body"><h4>Rural health camp — Nalanda</h4><p>Free screening, consultation and medicine distribution. 9 AM – 4 PM.</p></div>
+      <div class="events-header">
+        <div class="events-header-left">
+          <h3>Monday, 18 August</h3>
+          <p>Patna, Bihar</p>
+        </div>
+        <div class="events-header-right">
+          <div class="events-search">
+            <span>🔍</span>
+            <input type="text" placeholder="Search events...">
+          </div>
+        </div>
       </div>
-      <div class="event-row">
-        <div class="event-date"><div class="d">02</div><div class="m">Sep</div></div>
-        <div class="event-body"><h4>Blood donation drive — hospital campus</h4><p>In partnership with Dr. Bimal Hospital blood bank.</p></div>
-      </div>
-      <div class="event-row">
-        <div class="event-date"><div class="d">14</div><div class="m">Sep</div></div>
-        <div class="event-body"><h4>Volunteer training workshop</h4><p>Orientation for new camp and mentoring volunteers.</p></div>
-      </div>
-      <div class="event-row">
-        <div class="event-date"><div class="d">05</div><div class="m">Oct</div></div>
-        <div class="event-body"><h4>Annual fundraising evening</h4><p>Dinner and program showcase for donors and partners.</p></div>
+
+      <h3 style="margin-bottom:24px; font-size:19px; color:var(--navy);">All upcoming events</h3>
+
+      <div class="events-grid">
+        <div class="event-card">
+          <div class="event-image">
+            <img src="free-medical-camp.webp" alt="Rural health camp">
+            <div class="event-badge">AUG 18</div>
+          </div>
+          <div class="event-content">
+            <h4 class="event-title">Rural health camp — Nalanda</h4>
+            <p class="event-location">📍 Nalanda District, Bihar 83475</p>
+            <p class="event-description">Free screening, consultation and medicine distribution for rural communities.</p>
+            <div class="event-footer">
+              <div class="event-participants">
+                <div class="event-avatars">
+                  <div class="event-avatar">👨‍⚕️</div>
+                  <div class="event-avatar">👩‍⚕️</div>
+                  <div class="event-avatar">👨</div>
+                  <div class="event-avatar" style="background:var(--blue); color:#fff;">+45</div>
+                </div>
+                <span class="event-count">48+ joined</span>
+              </div>
+              <div class="event-time">9:00 AM</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="event-card">
+          <div class="event-image">
+            <img src="medical_aid.jpg" alt="Blood donation drive">
+            <div class="event-badge">SEP 02</div>
+          </div>
+          <div class="event-content">
+            <h4 class="event-title">Blood donation drive — Hospital campus</h4>
+            <p class="event-location">📍 Dr. Bimal Hospital, Patna</p>
+            <p class="event-description">In partnership with Dr. Bimal Hospital blood bank. All healthy adults welcome.</p>
+            <div class="event-footer">
+              <div class="event-participants">
+                <div class="event-avatars">
+                  <div class="event-avatar">👨</div>
+                  <div class="event-avatar">👩</div>
+                  <div class="event-avatar" style="background:var(--blue); color:#fff;">+28</div>
+                </div>
+                <span class="event-count">30+ joined</span>
+              </div>
+              <div class="event-time">10:00 AM</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="event-card">
+          <div class="event-image">
+            <img src="indian-doctor-examine.jpg" alt="Volunteer training">
+            <div class="event-badge">SEP 14</div>
+          </div>
+          <div class="event-content">
+            <h4 class="event-title">Volunteer training workshop</h4>
+            <p class="event-location">📍 Parivartan Office, Patna</p>
+            <p class="event-description">Orientation for new camp and mentoring volunteers. Lunch provided.</p>
+            <div class="event-footer">
+              <div class="event-participants">
+                <div class="event-avatars">
+                  <div class="event-avatar">👨</div>
+                  <div class="event-avatar">👩</div>
+                  <div class="event-avatar">👨</div>
+                  <div class="event-avatar" style="background:var(--blue); color:#fff;">+12</div>
+                </div>
+                <span class="event-count">15+ joined</span>
+              </div>
+              <div class="event-time">2:00 PM</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="event-card">
+          <div class="event-image">
+            <img src="Free_Surgeries.jpg" alt="Fundraising evening">
+            <div class="event-badge">OCT 05</div>
+          </div>
+          <div class="event-content">
+            <h4 class="event-title">Annual fundraising evening</h4>
+            <p class="event-location">📍 Hotel Maurya, Patna</p>
+            <p class="event-description">Dinner and program showcase for donors and partners. Formal attire.</p>
+            <div class="event-footer">
+              <div class="event-participants">
+                <div class="event-avatars">
+                  <div class="event-avatar">👨‍💼</div>
+                  <div class="event-avatar">👩‍💼</div>
+                  <div class="event-avatar">👨</div>
+                  <div class="event-avatar" style="background:var(--blue); color:#fff;">+87</div>
+                </div>
+                <span class="event-count">90+ joined</span>
+              </div>
+              <div class="event-time">7:00 PM</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="tab-panel" id="tab-news">
       <div class="grid-3">
         <div class="media-card">
-          <div class="img"><img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=500&q=80" alt="New dialysis unit"></div>
+          <div class="img"><img src="dylasis.jfif" alt="New dialysis unit"></div>
           <div class="body"><div class="media-date">JUL 2026</div><h4>New dialysis unit inaugurated</h4><p>Funded entirely through the Medical Equipment Fund.</p></div>
         </div>
         <div class="media-card">
-          <div class="img"><img src="https://images.unsplash.com/photo-1587746306681-8899e15f2a5e?w=500&q=80" alt="Nalanda camp"></div>
+          <div class="img"><img src="free-medical-camp.webp" alt="Nalanda camp"></div>
           <div class="body"><div class="media-date">JUN 2026</div><h4>500 patients screened in Nalanda camp</h4><p>Three-day rural health and vaccination camp.</p></div>
         </div>
         <div class="media-card">
-          <div class="img"><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=500&q=80" alt="Annual report"></div>
+          <div class="img"><img src="medical_aid.jpg" alt="Annual report"></div>
           <div class="body"><div class="media-date">MAY 2026</div><h4>Annual report published</h4><p>FY 2025-26 audited financials now available.</p></div>
         </div>
         <div class="media-card">
-          <div class="img"><img src="https://images.unsplash.com/photo-1584982751601-97dcc096659c?w=500&q=80" alt="Healthcare awards"></div>
+          <div class="img"><img src="indian-doctor-examine.jpg" alt="Healthcare awards"></div>
           <div class="body"><div class="media-date">APR 2026</div><h4>Trust recognized at Bihar Healthcare Awards</h4><p>Awarded for community outreach impact.</p></div>
         </div>
         <div class="media-card">
-          <div class="img"><img src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=500&q=80" alt="Patient milestone"></div>
+          <div class="img"><img src="cancer.jfif" alt="Patient milestone"></div>
           <div class="body"><div class="media-date">MAR 2026</div><h4>10,000th patient milestone reached</h4><p>A decade of cumulative patient support.</p></div>
         </div>
         <div class="media-card">
-          <div class="img"><img src="https://images.unsplash.com/photo-1583912267550-d4bfec5b1ccb?w=500&q=80" alt="Screening van"></div>
+          <div class="img"><img src="Free_Surgeries.jpg" alt="Screening van"></div>
           <div class="body"><div class="media-date">FEB 2026</div><h4>New mobile screening van added</h4><p>Extends camp reach to two more districts.</p></div>
         </div>
       </div>
     </div>
 
     <div class="tab-panel" id="tab-gallery">
+      <h3 style="margin-bottom:20px; font-size:19px; color:var(--navy);">Hospital Activities</h3>
+      <div class="gallery-grid" style="margin-bottom:40px;">
+        <div class="gallery-item"><img src="indian-doctor-examine.jpg" alt="Hospital medical consultation"></div>
+        <div class="gallery-item"><img src="dylasis.jfif" alt="Dialysis unit activity"></div>
+        <div class="gallery-item"><img src="cancer.jfif" alt="Cancer care treatment"></div>
+        <div class="gallery-item"><img src="Free_Surgeries.jpg" alt="Free surgery program"></div>
+      </div>
+
+      <h3 style="margin-bottom:20px; font-size:19px; color:var(--navy);">Community Outreach</h3>
       <div class="gallery-grid">
-        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=400&q=80" alt="Health camp"></div>
-        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1519494026892-80bbd3d616fc?w=400&q=80" alt="Hospital activity"></div>
-        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1615461066841-6116e61058f4?w=400&q=80" alt="Blood donation"></div>
-        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&q=80" alt="Equipment installation"></div>
-        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1580281657702-257584239a55?w=400&q=80" alt="Medical team"></div>
-        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1587746306681-8899e15f2a5e?w=400&q=80" alt="Community outreach"></div>
-        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1584982751601-97dcc096659c?w=400&q=80" alt="Award ceremony"></div>
-        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=400&q=80" alt="Volunteers"></div>
+        <div class="gallery-item"><img src="free-medical-camp.webp" alt="Free medical camp"></div>
+        <div class="gallery-item"><img src="medical_aid.jpg" alt="Medical aid distribution"></div>
+        <div class="gallery-item"><img src="indian-doctor-examine.jpg" alt="Community health screening"></div>
+        <div class="gallery-item"><img src="free-medical-camp.webp" alt="Rural health camp"></div>
       </div>
     </div>
 
@@ -368,7 +491,7 @@ footer{background:var(--navy); color:rgba(255,255,255,.7); padding:64px 0 28px; 
   <div class="wrap">
     <div class="footer-grid">
       <div>
-        <div class="logo" style="color:#fff; margin-bottom:14px;"><span class="logo-mark">P</span> Parivartan</div>
+        <div style="margin-bottom:14px;"><img src="parivartan_trust_logo.svg" alt="Parivartan Trust" style="height:90px; filter:brightness(0) invert(1);"></div>
         <p style="font-size:13.5px; max-width:280px;">Promoted and supported by Dr. Bimal Hospital. Registered charitable trust serving Bihar since 2010.</p>
       </div>
       <div><h5>Explore</h5><a href="about.html">About Us</a><a href="programs.html">Programs</a><a href="involve.html">Get Involved</a><a href="resources.html">Resources</a></div>

@@ -1,0 +1,43 @@
+<svg viewBox="50 150 800 250" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="petalGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B3D91"/>
+      <stop offset="100%" stop-color="#1E5FC2"/>
+    </linearGradient>
+    <linearGradient id="petalGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E88D6"/>
+      <stop offset="100%" stop-color="#5AACE8"/>
+    </linearGradient>
+    <radialGradient id="coreGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#EAF3FC"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Emblem group: four petals arranged as a cross, symbolizing hospital care + transformation/growth -->
+  <g transform="translate(180,290)">
+    <!-- Top petal (teal) -->
+    <path d="M0,0 C-26,-34 -30,-76 0,-118 C30,-76 26,-34 0,0 Z" fill="url(#petalGrad1)"/>
+    <!-- Right petal (coral) -->
+    <path d="M0,0 C34,-26 76,-30 118,0 C76,30 34,26 0,0 Z" fill="url(#petalGrad2)"/>
+    <!-- Bottom petal (teal) -->
+    <path d="M0,0 C26,34 30,76 0,118 C-30,76 -26,34 0,0 Z" fill="url(#petalGrad1)"/>
+    <!-- Left petal (coral) -->
+    <path d="M0,0 C-34,26 -76,30 -118,0 C-76,-30 -34,-26 0,0 Z" fill="url(#petalGrad2)"/>
+    <!-- Core -->
+    <circle cx="0" cy="0" r="22" fill="url(#coreGlow)"/>
+    <circle cx="0" cy="0" r="22" fill="none" stroke="#0B3D91" stroke-opacity="0.15" stroke-width="1.5"/>
+  </g>
+
+  <!-- Wordmark -->
+  <g transform="translate(360,240)">
+    <text x="0" y="0" font-family="'Trebuchet MS', 'Segoe UI', Arial, sans-serif" font-size="76" font-weight="700" letter-spacing="1" fill="#0B3D91">PARIVARTAN</text>
+    <text x="2" y="46" font-family="'Trebuchet MS', 'Segoe UI', Arial, sans-serif" font-size="26" font-weight="500" letter-spacing="9" fill="#1E88D6">TRUST</text>
+
+    <!-- divider line -->
+    <line x1="2" y1="72" x2="430" y2="72" stroke="#CFE0F5" stroke-width="1.5"/>
+
+    <!-- support line -->
+    <text x="2" y="104" font-family="'Trebuchet MS', 'Segoe UI', Arial, sans-serif" font-size="20" font-weight="400" letter-spacing="1" fill="#4A5A6E">Supported by Bimal Hospital</text>
+  </g>
+</svg>
